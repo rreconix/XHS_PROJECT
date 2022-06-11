@@ -1,0 +1,29 @@
+:root{
+    --background: #374388;
+}
+
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+#video{
+    background: var(--background);
+    border: 5px solid white;
+    height: 100%;
+    width: 768px;
+    display: flex;
+    position: relative;
+}
+
+#video img{
+    position: absolute;
+}
