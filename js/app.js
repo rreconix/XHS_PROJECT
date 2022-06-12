@@ -5,9 +5,6 @@ video.addEventListener('click', e => {
     console.log(e.clientX - videoRect.left, e.clientY - videoRect.top);
 })
 
-const videoHeight = videoRect.height;
-const videoWidth = videoRect.width;
-
 const changeImg = (img, sources, delay) => {
     let counter = 0;
     setInterval(() => {
@@ -16,7 +13,7 @@ const changeImg = (img, sources, delay) => {
     }, delay)
 }
 
-export const placeImage = ({ x, y, w = 75, h = 75, source1, source2 = undefined, delay = 1000 } = {}) => {
+export const placeImage = ({ x, y, w = 75, h = 75, source1, source2 = undefined, speed = 1000 } = {}) => {
     if([x,y, source1].some(val => val == undefined)){
         return console.warn('Invalid parameters');
     }
@@ -27,19 +24,22 @@ export const placeImage = ({ x, y, w = 75, h = 75, source1, source2 = undefined,
     video.appendChild(img);
 
     if(source2 !== undefined){
-        changeImg(img, [source1, source2], delay);
+        changeImg(img, [source1, source2], speed);
     }
-}
-
-export const enterMultipleImages = (array) => {
-    array.forEach(obj => {
-        placeImage(obj);
-    })
 }
 
 export const sleep = async(ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+export const enterMultipleImages = async(array) => {
+    for(const obj of array){
+        await sleep(obj.delay)
+        placeImage(obj)
+    }
+}
+
+
 
 export const removeChildren = (index, deleteCount = video.childElementCount - index) => {
     let children = [];
