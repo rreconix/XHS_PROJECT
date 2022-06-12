@@ -5,6 +5,9 @@ video.addEventListener('click', e => {
     console.log(e.clientX - videoRect.left, e.clientY - videoRect.top)
 })
 
+const videoHeight = videoRect.height
+const videoWidth = videoRect.width
+
 const changeImg = async(img, sources, delay) => {
     let counter = 0;
     setInterval(() => {
@@ -19,8 +22,8 @@ export const placeImage = async({ x, y, w = 75, h = 75, source1, source2 = undef
     }
     const img = new Image(w, h);
     img.src = source1
-    img.style.left = x + 'px'
-    img.style.top = y + 'px'
+    img.style.left = x + '%'
+    img.style.top = y + '%'
     video.appendChild(img)
 
     if(source2 !== undefined){
@@ -34,12 +37,18 @@ export const enterMultipleImages = (array) => {
     })
 }
 
-export const clearPage = async() =>{
-    [...video.children].forEach(element => {
-        video.removeChild(element)
-    })
-}
 
 export const sleep = async(ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+export const removeChildren = async(index1, index2 = video.childElementCount - index1) => {
+    let children = []
+    for(let i = 0; i < index2; i ++){
+        children.push([...video.children][index1 + i])
+    }
+
+    children.forEach(child => {
+        video.removeChild(child)
+    })
 }

@@ -1,8 +1,14 @@
-export const text = [
+export const text = [//x, y, are in percent
     [
-        {x: 100, y : 100, source1: '/images/blue.png', source2: '/images/red.png'},
-        {x: 200, y : 100, source1: '/images/red.png', source2: '/images/blue.png'},
-        {x: 300, y : 100, source1: '/images/blue.png', source2: '/images/green.png'},
-        {x: 400, y : 100, source1: '/images/green.png', source2: '/images/red.png'},
+        {x: 10, y: 10, source1: '/images/bulbasaur.png', source2: '/images/charizard.png'},
+        {x: 30, y: 10, source1: '/images/venasaur.png', source2: '/images/bulbasaur.png'},
+        {x: 50, y: 10, source1: '/images/charizard.png', source2: '/images/venasaur.png'},
+        {x: 70, y: 10, source1: '/images/blastoise.png', source2: '/images/charizard.png'},
+    ],
+    [
+        {x: 10, y: 30, source1: '/images/venasaur.png', source2: '/images/bulbasaur.png'},
+        {x: 30, y: 30, source1: '/images/blastoise.png', source2: '/images/charizard.png'},
+        {x: 50, y: 30, source1: '/images/charizard.png', source2: '/images/venasaur.png'},
+        {x: 70, y: 30, source1: '/images/bulbasaur.png', source2: '/images/blastoise.png'},
     ]
 ]
