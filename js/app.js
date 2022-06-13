@@ -13,7 +13,7 @@ const changeImg = (img, sources, delay) => {
     }, delay)
 }
 
-export const placeImage = ({ x, y, w = 75, h = 75, source1, source2 = undefined, speed = 1000 } = {}) => {
+const placeImage = ({ x, y, w = 75, h = 75, source1, source2 = undefined, speed = 1000 } = {}) => {
     if([x,y, source1].some(val => val == undefined)){
         return console.warn('Invalid parameters');
     }
@@ -32,14 +32,12 @@ export const sleep = async(ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export const enterMultipleImages = async(array) => {
+export const placeImages = async(array) => {
     for(const obj of array){
         await sleep(obj.delay)
         placeImage(obj)
     }
 }
-
-
 
 export const removeChildren = (index, deleteCount = video.childElementCount - index) => {
     let children = [];

@@ -1,11 +1,9 @@
 import { text } from '../text.js'
-import { placeImage, sleep, enterMultipleImages, removeChildren } from './app.js'
+import { sleep, placeImages, removeChildren } from './app.js'
 
-enterMultipleImages(text[0])
+placeImages(text[0])
 await sleep(1000)
-enterMultipleImages(text[1])
-placeImage(
-    {x: 60, y: 70, w: 200, h: 200, source1: './images/blastoise.png'}
-)
+placeImages(text[1])
+placeImages(text[2])
 await sleep(3000)
 removeChildren(0)
