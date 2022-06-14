@@ -13,12 +13,15 @@ const changeImg = (img, sources, delay) => {
     }, delay)
 }
 
-const placeImage = ({ x, y, w = 75, h = 75, source1, source2 = undefined, speed = 1000 } = {}) => {
-    if([x,y, source1].some(val => val == undefined)){
-        return console.warn('Invalid parameters');
+const placeImage = ({ x, y, w = 10, h = 10, source1, source2 = undefined, speed = 1000 } = {}) => {
+    source2 = undefined
+    if([x,y, source1].some(val => val == undefined)) throw new Error('Invalid parameters');
+    if([x, y, h, w].some(val => val < 0 || val >= 100)){
+        throw new Error('Value out of range')
     }
-    const img = new Image(w, h);
+    const img = new Image();
     img.src = source1;
+    img.style.width = w + '%';
     img.style.left = x + '%';
     img.style.top = y + '%';
     video.appendChild(img);
