@@ -16,9 +16,7 @@ const changeImg = (img, sources, delay) => {
 const placeImage = ({ x, y, w = 10, h = 10, source1, source2 = undefined, speed = 1000 } = {}) => {
     source2 = undefined
     if([x,y, source1].some(val => val == undefined)) throw new Error('Invalid parameters');
-    if([x, y, h, w].some(val => val < 0 || val >= 100)){
-        throw new Error('Value out of range')
-    }
+    if([x, y, h, w].some(val => val < 0 || val >= 100)) throw new Error('Value out of range')
     const img = new Image();
     img.src = source1;
     img.style.width = w + '%';

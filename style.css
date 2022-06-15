@@ -26,5 +26,5 @@ body{
 
 #video img{
     position: absolute;
-    height: auto;
+    aspect-ratio: 1;
 }
