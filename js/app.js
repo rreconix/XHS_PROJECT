@@ -1,9 +1,4 @@
 const video = document.querySelector('#video');
-const videoRect = video.getBoundingClientRect();
-
-video.addEventListener('click', e => {
-    console.log(e.clientX - videoRect.left, e.clientY - videoRect.top);
-})
 
 const placeImage = (image) => {
     const img = new Image();
