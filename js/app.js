@@ -16,6 +16,7 @@ const sleep = async(ms) => {
 }
 
 export const placeImages = async(images) => {
+    removeChild()
     placeImage(images[0])
     for(const img of images){
         placeImage(img)
@@ -27,7 +28,7 @@ export const placeImages = async(images) => {
 }
 
 const removeChild = () => {
-    const child = [...video.children][0] || undefined;
+    const child = video.children[0] || undefined
     if(child) video.removeChild(child)
 }
 
