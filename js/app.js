@@ -1,39 +1,40 @@
 const video = document.querySelector('#video');
 
 const placeImage = (image) => {
-    const img = new Image();
-    img.src = image;
-    video.appendChild(img);
+  const img = new Image();
+  img.src = image;
+  video.appendChild(img);
 }
 
 const sleep = async(ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 export const placeImages = async(images) => {
-    removeChild()
-    placeImage(images[0])
-    for(const img of images){
-        placeImage(img)
-        await sleep(200)
-        removeChild()
-    }
-    await sleep(3000)
-    placeImages(images)
+  for(let i = 0; i < images.length; i++){
+    if(video.childElementCount > 2) removeChildren()
+    placeImage(images[i])
+    await sleep(200)
+  }
+  
+  await sleep(3000)
+  placeImages(images)
 }
 
-const removeChild = () => {
-    const child = video.children[0] || undefined
-    if(child) video.removeChild(child)
+const removeChildren = () => {
+  [...video.children].forEach((child, index) => {
+    if(index >= video.childElementCount - 1) return
+    video.removeChild(child)
+  })
 }
 
 export const getImageSources = () => {
-    let images = [];
-    for(let i = 1660; i < 1734; i++){
-        if(i !== 1723){
-            images.push(`./images/IMG-${i}.jpg`)
-        }
+  let images = [];
+  for(let i = 1660; i < 1734; i++){
+    if(i !== 1723){
+      images.push(`./images/IMG-${i}.jpg`)
     }
+  }
 
-    return images
+  return images
 }
